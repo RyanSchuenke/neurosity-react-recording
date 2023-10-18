@@ -37,7 +37,7 @@ export function Recording() {
       //make sure we're connected 
       
       const stateSubscription = notion.status().subscribe(status => {
-        if (status.state != 'online' || status.sleepMode) {
+        if (status.state !== 'online' || status.sleepMode) {
           console.log('make sure the neurosity is online');
           recorder=2
           console.log(recorder)
@@ -50,16 +50,16 @@ export function Recording() {
       const time = new Date(Date.now());
       setTimeRef(time);
 
-      if (recorder == 1 || buttonText !== 'Start Recording') {
+      if (recorder === 1 || buttonText !== 'Start Recording') {
         setTimeRef(timeRef.toString());
         stopRecording();
         setButtonText('Start Recording');
         setFocusDisplay('');
-      } else if (recorder == 0) {
+      } else if (recorder === 0) {
         setButtonText('Stop Recording');
       };
 
-      recorder == 0 ? recorder=1 : recorder=0;
+      recorder === 0 ? recorder=1 : recorder=0;
 
       setUseableData([[time,"time", "Focus Score", "Calm Score"], "\n"]);
       var rawDataCol = [time,"raw time"];
@@ -125,27 +125,27 @@ export function Recording() {
         setCalmNumb(CalmScore);
       });
 
-      const rawSubscription = notion.brainwaves('raw').subscribe((raw) => {
+      const subscriptionR = notion.brainwaves('raw').subscribe((raw) => {
         setRawNumb(raw)
       })
   
       return () => {
         subscriptionF.unsubscribe();
         subscriptionC.unsubscribe();
-        rawSubscription.unsubscribe();
+        subscriptionR.unsubscribe();
       };
     }, [recorder]);
 
 
     useEffect(() => {
-      if (recorder == 0) {
+      if (recorder === 0) {
         return;
       }
       handleAdd();
     }, [focusNumb]);
 
     useEffect(() => {
-      if (recorder == 0) {
+      if (recorder === 0) {
         return;
       }
       handleAddRaw();

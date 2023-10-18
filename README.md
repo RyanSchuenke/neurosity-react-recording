@@ -1,6 +1,11 @@
-# 🚀 Notion React Starter
+# Notion React Recording
 
-![App Screenshot](public/notion-react-starter.png)
+Based off of the "Notion React Starter" available [here](https://github.com/neurosity/neurosity-react-web-starter)
+
+Allows for the recording and saving of raw EEG data, the probability of being focused, and the probability of being calm over a duration of time to csv files.
+Specifically designed for use in ADHD BCI research to determine the effects of body doubling on a person's calmness and focus.
+
+![Recording Screenshot](public/notion-react-recording.png)
 
 ### Getting Started
 
