@@ -136,6 +136,11 @@ export function Recording() {
       };
     }, [recorder]);
 
+    window.onbeforeunload = function(){
+      if (recorder === 1) {
+        stopRecording()
+      }
+    };
 
     useEffect(() => {
       if (recorder === 0) {

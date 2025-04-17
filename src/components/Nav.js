@@ -6,7 +6,9 @@ import { Footer } from "./Footer";
 
 export function Nav() {
   function goToLogout() {
-    navigate("/logout");
+    if (window.confirm("Are you sure you want to log out?")) {
+      navigate("/logout");
+    }
   }
 
   return (
